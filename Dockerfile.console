@@ -1,0 +1,10 @@
+FROM ansible:base
+
+ADD hosts /etc/ansible
+
+ADD rsa_dist.sh /etc/ansible
+
+ADD ssh_config /etc/ssh/ssh_config
+
+RUN chmod 777 /etc/ansible/rsa_dist.sh &&\
+	vi +':w ++ff=unix' +':q' /etc/ansible/rsa_dist.sh ##comment this line if using Linux 
